@@ -1,0 +1,25 @@
+{% include 'header.html' %}
+
+{% block content %}
+<style>
+    input{
+        margin: 0px 16px;
+    }
+    #submitb{
+        margin: 1px 53px;
+        padding: 8px 20px;
+    }
+    #submitb:hover{
+        background-color: rgba(255, 160, 77, 0.997);
+    }
+</style>
+<h1>Add new task</h1>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input id="Submitb" type="submit" value="Add Task">    
+    </form>
+</div>
+
+{% endblock content %}

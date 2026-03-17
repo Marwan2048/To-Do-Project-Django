@@ -1,0 +1,105 @@
+{% include 'header.html' %}
+    <style>
+        .container ,.all{
+            display: flex;
+        }
+        #header{
+            border: solid;
+            border-color: white;
+            border-bottom-color: black;
+            border-top-color: black;
+            justify-self: center;
+            color: rgba(69, 0, 0, 0.729);
+            position: relative;
+            right: 35px;
+        }
+        #add {
+            background-color: rgb(239, 240, 174);
+            border-radius: 30px;
+            border: solid;
+            text-align: center;
+            width: 145px;
+        }
+        #completed{
+            background-color: rgb(239, 240, 174);
+            border: solid;
+            border-radius: 50px;
+            position: relative;
+            left: 5px;
+        }
+        a{
+            color: black;
+            text-decoration: none;  
+        }
+        
+        .main{
+        background-color: rgba(145, 204, 255, 0.549);
+        border: solid;
+        }
+        h1 , h3{
+            padding: 0px 10px;
+        }
+        h1{
+            color: black;
+            text-transform: capitalize;
+        }
+        h3{
+            color: lab(55.44% 47.14 64.74);
+        }
+        .edit,.delete ,.mark{
+            position: relative;
+        }
+        .mark{
+            left: 12px;
+            bottom: 9px;
+        }
+        .edit{
+            left: 675px;
+            bottom: 9px;
+            
+        }
+        .delete{
+            left: 1478px;
+            bottom: 9px;
+        }
+        #markid{
+            background-color: rgba(0, 202, 67, 0.689);
+            cursor: pointer;
+            padding: 6px 6px;
+        }
+        #editid{
+            background-color: rgb(255, 255, 0);
+            cursor: pointer;
+            padding: 6px 6px;
+            
+        }
+        #deleteid{
+            color: white;
+            background-color: rgb(216, 19, 19);
+            cursor: pointer;
+            padding: 6px 6px;
+        }
+    </style>
+<body>
+    <div class="container">
+    <div ><h1 id="add"><a href="{% url 'add_task' %}">Add Task</a></h1></div>
+    <h1 id="completed"><a href="{% url 'completed_task'%}">Completed Tasks</a></h1>
+    </div>
+{% block content %}
+    <h1 id="header">Your Tasks</h1>
+    {% for item in tasks %}
+        <div class="main">
+            <h1><u> {{item.task}}</u></h1>           
+                <h3>{{item.details}}</h3>
+                <div class="all">
+                <div class="mark"><a  href="{% url 'mark_as_done' item.id %}"><button id="markid">Mark as done</button></a></div>
+                <div class="edit"><a  href="{% url 'update_task' item.id %}" ><button id="editid" >Edit</button></a></div>
+                <div class="delete"><a href="{% url 'delete_task' item.id %}"><button id="deleteid" >Delete</button></a></div>
+                </div>
+        </div>
+        <br>
+        
+    {% endfor %}
+{% endblock content %}
+</body>
+

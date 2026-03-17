@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+<style>
+    .main{
+        background-color: rgba(145, 204, 255, 0.549);
+        border: solid;
+    }
+    h1 , h3{
+            padding: 0px 10px;
+        }
+        h1{
+            color: black;
+            text-transform: capitalize;
+        }
+        h3{
+            color: rgb(0, 157, 3);
+            }
+        #header{
+        border: solid;
+        border-color: white;
+        border-bottom-color: black;
+        border-top-color: black;
+        justify-self: center;
+        color: rgba(69, 0, 0, 0.729);
+        position: relative;
+        right: 35px;}
+</style>
+<h1 id="header">Tasks completed</h1>
+
+{% for item in tasks %}
+        <div class="main">
+            <h1><del> {{item}} </del></h1>           
+        </div>
+        <br>
+{% endfor %}
